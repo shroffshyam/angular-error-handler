@@ -9,7 +9,7 @@ export interface LoggingErrorHandlerOptions {
 
 export const LOGGING_ERROR_HANDLER_OPTIONS: LoggingErrorHandlerOptions = {
     rethrowError: false,
-    unwrapError: false
+    unwrapError: true
 };
 
 @Injectable()

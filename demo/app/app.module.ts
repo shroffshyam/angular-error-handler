@@ -5,11 +5,14 @@ import { MockHttpModule } from '../../src/mock.module';
 
 import { AppComponent } from './app.component';
 import { UserService } from './shared/services/user.service';
-import { CustomErrorHandler } from  '../../src/error/error.module';
+import { CustomErrorModule } from  '../../src/error/error.module';
+import { ErrorLogService } from '../../src/error/error-log.service';
 
-export class CustomErrorLogService implements ErrorLogService{
+export class CustomErrorLogService extends ErrorLogService{
 
 }
+
+
 
 @NgModule({
   declarations: [
@@ -19,13 +22,35 @@ export class CustomErrorLogService implements ErrorLogService{
     BrowserModule,
     FormsModule,
     MockHttpModule,
-    CustomErrorHandler.forRoot({
-      errorLogService : {provide: ErrorLogService, useClass: CustomErrorLogService}
-    })
+    CustomErrorModule.forRoot()
   ],
    providers: [
-    UserService
+    UserService,
+    {provide: ErrorLogService, useClass: CustomErrorLogService}
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
+
+// @NgModule({
+//   declarations: [
+//     AppComponent
+//   ],
+//   imports: [
+//     BrowserModule,
+//     FormsModule,
+//     MockHttpModule,
+//     CustomErrorModule
+//     // CustomErrorHandler.forRoot({
+//     //   errorLogService : {provide: ErrorLogService, useClass: CustomErrorLogService}
+//     // })
+//   ],
+//    providers: [
+//     UserService
+//   ],
+//   bootstrap: [AppComponent]
+// })
+// export class AppModule { }

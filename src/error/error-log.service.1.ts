@@ -1,5 +1,10 @@
 
-declare var newrelic: { noticeError(error: any): void; };
+// To configure an external lib like newrelic-tracker follow these steps
+// 1. Either download or in your index.html add areference to a newrelic script
+
+//or do private nreRelic
+// then in construtor call this.
+declare const newrelic: { noticeError(error: any): void; };
 
 
 // Import the core angular services.

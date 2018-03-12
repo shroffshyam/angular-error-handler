@@ -30,7 +30,7 @@ export class ErrorLogService {
 
 	}
 
-	// send the error the browser console (safely, if it exists).
+	// send the error to browser console (safely, if it exists).
 	private sendToConsole(error: any): void {
 
 		if (console && console.group && console.error) {
@@ -46,14 +46,14 @@ export class ErrorLogService {
 	}
 
 
-	// I send the error to the NewRelic error logging service.
+	//send the error to the NewRelic error logging service.
 	private sendToNewRelic(error: any): void {
 		// Read more: https://docs.newrelic.com/docs/browser/new-relic-browser/browser-agent-apis/report-data-events-browser-agent-api
 		newrelic.noticeError(error);
 	}
 
 
-	// I send the error to the server-side error tracking end-point.
+	//send the error to the server-side error tracking end-point.
 	private sendToServer(error: any): void {
 
 		this.http
@@ -77,5 +77,4 @@ export class ErrorLogService {
 			;
 
 	}
-
 }
